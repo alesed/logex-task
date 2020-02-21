@@ -1,0 +1,79 @@
+<mat-card>
+  <div class="mat-elevation-z8">
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Filter
+          </mat-panel-title>
+          <mat-panel-description>
+            Various ways like by name, city, start year or postcode
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <!-- Name filter input -->
+        <mat-form-field class="filter">
+          <mat-label>Name</mat-label>
+          <input matInput placeholder="Ex. Restaurant" [formControl]="nameFilter" autocomplete="off">
+        </mat-form-field>
+        <!-- City filter select -->
+        <mat-form-field>
+          <mat-label>City</mat-label>
+          <mat-select [formControl]="cityFilter">
+            <mat-option value="">--</mat-option>
+            <mat-option *ngFor="let city of citiesList" [value]="city">{{city}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <!-- Postcode filter input -->
+        <mat-form-field class="filter">
+          <mat-label>Postcode</mat-label>
+          <input matInput placeholder="Ex. 1234 AD" [formControl]="postcodeFilter" autocomplete="off">
+        </mat-form-field>
+        <!-- Start year filter input -->
+        <mat-form-field class="filter">
+          <mat-label>Start year</mat-label>
+          <input matInput placeholder="Ex. 2011" [formControl]="yearFilter" autocomplete="off">
+        </mat-form-field>
+
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+
+  <div class="mat-elevation-z8 mt-2">
+    <table mat-table [dataSource]="dataSource">
+      <!-- Name column -->
+      <ng-container matColumnDef="name">
+        <th class="header" mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let element">{{element.title}}</td>
+      </ng-container>
+      <!-- City column -->
+      <ng-container matColumnDef="city">
+        <th class="header" mat-header-cell *matHeaderCellDef>City</th>
+        <td mat-cell *matCellDef="let element">{{element.location.city}}</td>
+      </ng-container>
+      <!-- Postcode column -->
+      <ng-container matColumnDef="postcode">
+        <th class="header" mat-header-cell *matHeaderCellDef>Postcode</th>
+        <td mat-cell *matCellDef="let element">{{element.location.zipcode}}</td>
+      </ng-container>
+      <!-- Address column -->
+      <ng-container matColumnDef="address">
+        <th class="header" mat-header-cell *matHeaderCellDef>Address</th>
+        <td mat-cell *matCellDef="let element">{{element.location.adress}}</td>
+      </ng-container>
+      <!-- Start year column -->
+      <ng-container matColumnDef="start_year">
+        <th class="header" mat-header-cell *matHeaderCellDef>Start year</th>
+        <td mat-cell *matCellDef="let element">
+          {{element.dates.startdate ? element.dates.startdate.substring(6,10) : ''}}
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+      <tr mat-row *matRowDef="let element; columns: columnsToDisplay" (click)="getRecord(element)"></tr>
+
+    </table>
+    <!-- Select number of elements per page (default 10) -->
+    <mat-paginator [pageSizeOptions]="[10, 5, 20]" showFirstLastButtons></mat-paginator>
+  </div>
+
+</mat-card>

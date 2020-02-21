@@ -1,0 +1,23 @@
+<h2 mat-dialog-title>Detail</h2>
+
+<mat-dialog-content>
+
+    <mat-list role="list">
+        <mat-list-item role="listitem"><b>Name:</b>&nbsp;{{data.one.title}}</mat-list-item>
+
+        <mat-list-item role="listitem"><b>City:</b>&nbsp;{{data.one.location.city}}</mat-list-item>
+        <mat-list-item role="listitem"><b>Address:</b>&nbsp;{{data.one.location.adress}}</mat-list-item>
+        <mat-list-item role="listitem"><b>Postcode:</b>&nbsp;{{data.one.location.zipcode}}</mat-list-item>
+
+        <mat-list-item *ngFor="let url of data.one.urls" role="listitem">
+            <b>URL:</b>&nbsp;<a href={{url}}>{{url}}</a>
+        </mat-list-item>
+
+        <!-- <mat-list-item *ngFor="let image of data.one.media" role="listitem">
+
+        </mat-list-item> -->
+    </mat-list>
+
+    <ng-image-slider [images]="imageObject" #nav></ng-image-slider>
+
+</mat-dialog-content>
