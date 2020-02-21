@@ -1,27 +1,30 @@
+
 # Ukol
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.2.
 
-## Development server
+## My extensions
+  Project contain main task including dataset **"Out in Amsterdam"**.
+  
+  Application allows user to view data in tabular way and filter results by every seperate filter in Angular material component **mat-accordion**.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+City filter is different by putting select input which contains every city that exists in dataset.
 
-## Code scaffolding
+Because dataset has a big amount of data, table has more than 500 rows. I decided to do the application more intuitive for everyone and include **mat-paginator** which allows browsing **per page of default 10 elements** or from the option of 5 or 20.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Application offers dialog component named `DetailComponent`. Dialog is opened whenever user click on any selected row from table.
+Offers detailed view of venue
 
-## Build
+ - Full name
+ - Full address
+ - Gallery of photos included in dataset (fullscreen mode enabled when clicked on photo)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## How to use
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Run `npm start` or `ng serve` for a dev server. Navigate to `http://localhost:4200/` and application autamtically redirect user to `/table` URL. 
 
 ## Further help
+
+  
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
